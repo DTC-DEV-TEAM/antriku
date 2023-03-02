@@ -96,13 +96,14 @@
                         <td width="20%" style="vertical-align: top;">
                             <label class="control-label col-md-12"><strong>Contact#:<strong></label>
                         </td>
-                        <td width="40%">
+                        <td width="40%" style="vertical-align: top;">
                             <p>{{$data['transaction_details']->contact_no}}</p>
                         </td>
                         <td width="20%" style="vertical-align: top;">
                             <label class="control-label col-md-12"><strong>Address:<strong></label>
                         </td>
                         <td width="40%">
+                            {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut commodi labore totam explicabo, blanditiis excepturi.</p> --}}
                             <p>{{$data['transaction_details']->address}}</p>
                         </td>
                     </tr>
@@ -172,6 +173,15 @@
                             <p>{{$data['transaction_details']->gsx_no}}</p>
                         </td>
                     </tr>  
+                    <tr style="font-size: 13px">
+                        <td width="20%" style="vertical-align: top">
+                            <label class="control-label col-md-12"><strong>WUR/SUR:</strong></label>
+                        </td>
+                        <td>
+                            <p>{{$transaction_details->wur_sur}}</p>
+                        </td>
+                    </tr>
+
                 </table>  
                 <br>
 
@@ -207,6 +217,31 @@
                     </tbody>
                 </table>
                 <br> -->
+                {{-- Technician Details --}}
+                <table width="100%" class="print-friendly" style="margin-bottom: 5px">
+                    <tr style="font-size: 18px;">
+                        <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
+                            <label style="margin-bottom:unset !important;">Technician</label>
+                        </td>
+                    </tr>
+                    @foreach ( $technician_info as $technician )
+                    <tr style="font-size: 13px;">
+                        <td width="20%" style="vertical-align: top;">
+                            <label class="control-label col-md-12"><strong>Technician Name:<strong></label>
+                        </td>
+                        <td width="40%">
+                            <p>{{ $technician->name }}</p>
+                        </td>
+                        <td width="20%" style="vertical-align: top;">
+                            <label class="control-label col-md-12"><strong>Technician ID:<strong></label>
+                        </td>
+                        <td width="40%">
+                            <p>{{ $technician->technician_id }}</p>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+                {{-- End of Technician Details --}}
                 <table class="print-friendly" width="100%" style="border-spacing:unset !important;"> 
                     <tbody> 
                         <tr style="font-size:18px;">
@@ -287,32 +322,6 @@
                     </tr>
                 </table>
                 {{-- End of Repair Strategy --}}
-
-                {{-- Technician Details --}}
-                <table width="100%" class="print-friendly" style="margin-bottom: 5px">
-                    <tr style="font-size: 18px;">
-                        <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
-                            <label style="margin-bottom:unset !important;">Technician</label>
-                        </td>
-                    </tr>
-                    @foreach ( $technician_info as $technician )
-                    <tr style="font-size: 13px;">
-                        <td width="20%" style="vertical-align: top;">
-                            <label class="control-label col-md-12"><strong>Technician Name:<strong></label>
-                        </td>
-                        <td width="40%">
-                            <p>{{ $technician->name }}</p>
-                        </td>
-                        <td width="20%" style="vertical-align: top;">
-                            <label class="control-label col-md-12"><strong>Technician ID:<strong></label>
-                        </td>
-                        <td width="40%">
-                            <p>{{ $technician->technician_id }}</p>
-                        </td>
-                    </tr>
-                    @endforeach
-                </table>
-                {{-- End of Technician Details --}}
 
                 <table class="print-friendly" width="100%" style="border-spacing:unset !important;">
                     <tbody> 
@@ -395,19 +404,19 @@
                                 <label class="control-label col-md-12"><strong>Downpayment Cost</strong></label>
                             </td>
                             <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
-                                <label class="control-label col-md-12"><strong>Downpayment Ref#</strong></label>
+                                <label class="control-label col-md-12"><strong>Downpayment SOC#</strong></label>
                             </td>
                             <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
-                                <label class="control-label col-md-12"><strong>Downpayment Ref Date</strong></label>
+                                <label class="control-label col-md-12"><strong>Downpayment SOC Date</strong></label>
                             </td>
                             <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
                                 <label class="control-label col-md-12"><strong>Final Payment Cost</strong></label>
                             </td>
                             <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
-                                <label class="control-label col-md-12"><strong>Final Payment Ref#</strong></label>
+                                <label class="control-label col-md-12"><strong>Final Payment SI#</strong></label>
                             </td>
                             <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
-                                <label class="control-label col-md-12"><strong>Final Payment Ref Date</strong></label>
+                                <label class="control-label col-md-12"><strong>Final Payment Date</strong></label>
                             </td>
                             <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
                                 <label class="control-label col-md-12"><strong>Requote</strong></label>
@@ -458,34 +467,28 @@
                     </tbody>
                 </table>
                 </div>      
-                <br>
+                <br>   
                 <table width="100%" class="print-friendly">
-                    <td width="20%" style="vertical-align: top;">
-                        <label class="control-label col-md-12"><strong>WUR/SUR:</strong></label>
-                    </td>
-                    <td>
-                        <p>{{$transaction_details->wur_sur}}</p>
-                    </td>
-                </table>    
-                <table width="100%" class="print-friendly">
-                    <td width="20%" style="vertical-align: top;">
-                        <label class="control-label col-md-12"><strong>Payment Remarks:</strong></label>
-                    </td>
-                    <td>
-                        @if ($transaction_details->final_payment_ref != null)
+                    <tr style="font-size: 13px;">
+                        <td width="20%" style="vertical-align: top;">
+                            <label class="control-label col-md-15"><strong>Payment Remarks:<strong></label>
+                        </td>
+                        <td width="100%">
+                            @if ($transaction_details->final_payment_ref != null)
                             <p>Paid</p>
-                        @elseif ($transaction_details->down_payment_ref != null)
-                            <p>Downpayment Paid</p>
-                        @elseif ($transaction_details->repair_status == 3)
-                            <p>Refunded</p>
-                        @endif
-                    </td>
+                            @elseif ($transaction_details->down_payment_ref != null)
+                                <p>Downpayment Paid</p>
+                            @elseif ($transaction_details->repair_status == 3)
+                                <p>Refunded</p>
+                            @endif
+                        </td>
+                    </tr>
                 </table>    
                 <br>
                 <table width="100%" class="print-friendly">
                     <tr style="font-size: 13px;">
-                        <td colspan="2" style="text-align: center;">
-                            <p>Warranty & Limitation of Liability. For all Service Repairs, Beyond the Box warrants that (1) services performed will conform to their description for ninety (90) days from the date of payment receipt, (2) except for batteries described in the subsection below, all parts or products used in service will be free from defects in materials and workmanship for ninety (90) days from the date of payment receipt, and (3) batteries installed as part of Apple’s battery replacement service for Apple portable Mac computers will be free from defects in materials and workmanship for one year from the date of service. If non-conforming service is provided or a defect arises in a replacement part or product during the applicable warranty period, Beyond the Box will at its option, either (a) re-perform services to conform to their description (b) repair or replace the part or product, using parts or products that are new or equivalent to new in performance and reliability, or (c) refund the sums paid to Beyond the Box for service.</p>
+                        <td colspan="2" style="text-align: justify;">
+                            <p style="text-indent: 50px">Warranty & Limitation of Liability. For all Service Repairs, Beyond the Box warrants that (1) services performed will conform to their description for ninety (90) days from the date of payment receipt, (2) except for batteries described in the subsection below, all parts or products used in service will be free from defects in materials and workmanship for ninety (90) days from the date of payment receipt, and (3) batteries installed as part of Apple’s battery replacement service for Apple portable Mac computers will be free from defects in materials and workmanship for one year from the date of service. If non-conforming service is provided or a defect arises in a replacement part or product during the applicable warranty period, Beyond the Box will at its option, either (a) re-perform services to conform to their description (b) repair or replace the part or product, using parts or products that are new or equivalent to new in performance and reliability, or (c) refund the sums paid to Beyond the Box for service.</p>
                         </td>
                     </tr>
                     <tr></tr><tr></tr>
@@ -498,6 +501,7 @@
                         </td>
                        
                     </tr>      -->
+                    
                     <tr style="font-size: 13px;">
                         <!-- <td width="1%" style="vertical-align: top;">
                             <label class="control-label col-md-12"><strong><strong></label>
@@ -505,7 +509,7 @@
                         <td width="10%" left="10%">
                             <p>Signature over Printed Name and Date</p>
                         </td> -->
-
+                        
                         <td width="100%" style="text-align: center;">
                             <b>I acknowledge the details above and have received the device in good, working condition.</b>
                             <br><br>
@@ -514,6 +518,15 @@
                         </td>
 
                     </tr>     
+                </table>
+                <br>
+                <table>
+                    <tr style="font-size: 13px;">
+                        <td colspan="2" style="text-align: justify;">
+                            <p style="text-align: center;"><b>BTB SC will share your details with Apple for review.</b></p>
+                            <p style="text-indent: 50px">Any items not claimed within 60 days after initial update that your item is ready for pick up, BTB SC  will notify you that it considers your product to be abandoned.  BTB SC will send notice to the number and/or email address you provided  when you authorized service. In the event that your product is abandoned, BTB SC  may dispose of your product in accordance with applicable provisions of law, and, specifically, may sell your product at a private or public sale to pay for any outstanding service performed. BTB SC reserves its statutory and any other lawful liens for unpaid charges.</p>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>          
@@ -535,12 +548,24 @@
 <script type="text/javascript">
     function printDivision(divName) {
         alert('Please print 2 copies!');
+
         var generator = window.open(",'printableArea,");
         var layertext = document.getElementById(divName);
         generator.document.write(layertext.innerHTML.replace("Print Me"));
         generator.document.close();
         generator.print();
         generator.close();
+
+        // var mywindow = window.open();
+        // var content = document.getElementById('printableArea').innerHTML;
+        // var realContent = document.body.innerHTML;
+        // mywindow.document.write(content);
+        // mywindow.document.close(); // necessary for IE >= 10
+        // mywindow.focus(); // necessary for IE >= 10*/
+        // mywindow.print();
+        // document.body.innerHTML = realContent;
+        // mywindow.close();
+        // return true;
     }  
 
     $(document).on('click', '#print', function(e){

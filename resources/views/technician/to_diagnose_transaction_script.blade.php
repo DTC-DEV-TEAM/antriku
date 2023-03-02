@@ -366,13 +366,13 @@
                            location.reload();
                         });
                     }
-                    // else if(status_id == 'store_payment'){
-                    //     $(".buttonSubmit").removeAttr("disabled");
-                    //     swal({ title: "Success!", text: "Final Payment Saved.", type: "success"
-                    //     }, function(){
-                    //        location.reload();
-                    //     });
-                    // }
+                    else if(status_id == 'store_payment'){
+                        $(".buttonSubmit").removeAttr("disabled");
+                        swal({ title: "Success!", text: "Final Payment Saved.", type: "success"
+                        }, function(){
+                           location.reload();
+                        });
+                    }
                 }                    
             });
             return false;

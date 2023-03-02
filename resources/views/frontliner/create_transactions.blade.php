@@ -87,7 +87,19 @@
                             <br>
                         </div>
                     </div>
-                    <br/><br/>
+                    <br>
+                    <div class="row"> 
+                        <label class="require control-label col-md-2"><span class="requiredField">*</span>Store Down Payment:</label>
+                        <div class="col-md-3">
+                            <label class="radio-inline control-label "><input type="radio" name="downpayment" value="YES"  required>YES</label>
+                            <br>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="radio-inline control-label "><input type="radio" name="downpayment" value="NO" required>NO</label>
+                            <br>
+                        </div>
+                    </div>
+                    <br/>
                     <div class="row">                           
                         <label class="control-label col-md-2" style="margin-top:7px;"><span class="requiredField">*</span>{{ trans('labels.form-label.purchase_date') }}</label>
                         <div class="col-md-4">

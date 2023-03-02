@@ -504,12 +504,23 @@
 				'level1_personnel'          => CRUDBooster::myId(),
 				'level1_personnel_edited'   => date('Y-m-d H:i:s')
 			]);
-			
+
 			$numberCode = str_pad($headerID, 9, "0", STR_PAD_LEFT);
 			$tracking_number = 'A'.$numberCode;
 
+			if($data['downpayment'] == 'YES'){
+				$numberCode = str_pad($headerID, 8, "0", STR_PAD_LEFT);
+				$down_payment_ref_no = 'DP'.$numberCode;
+				$dpdc = date('Y-m-d H:i:s');
+			}else{
+				$down_payment_ref_no = null;
+				$dpdc = null; 
+			}
+
 			DB::table('returns_header')->where('id', $headerID)->update([
-				'reference_no'	=>	$tracking_number,
+				'reference_no'				=>	$tracking_number,
+				'down_payment_ref'			=> $down_payment_ref_no,
+				'down_payment_date_created' => $dpdc,
 			]);
 
 			DB::table('returns_payments')->insertGetId([
@@ -617,21 +628,12 @@
 				
 			}elseif($request->status_id == 1)
 			{
-				// $down_payment = DB::table('returns_header')->where('id',$request->header_id)->first()->down_payment_ref;
-
-				// if($down_payment == null){
-				// 	$numberCode = str_pad($request->header_id, 8, "0", STR_PAD_LEFT);
-				// 	$down_payment_ref_no = 'DP'.$numberCode;
-				// 	$dpdc = date('Y-m-d H:i:s');
-				// }
-
 				DB::table('returns_header')->where('id',$request->header_id)->update([
 					'repair_status' 			=> 1,
 					'updated_by'            	=> CRUDBooster::myId(),
 					'level2_personnel'          => CRUDBooster::myId(),
 					'level2_personnel_edited'   => date('Y-m-d H:i:s'),
-					// 'down_payment_ref'			=> $down_payment_ref_no,
-					// 'down_payment_date_created' => $dpdc
+
 				]);
 			}
 

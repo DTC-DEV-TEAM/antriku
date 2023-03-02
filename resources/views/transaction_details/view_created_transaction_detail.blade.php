@@ -245,7 +245,7 @@
                         <button type="submit" id="void" onclick="return changeStatus(5)" class="btn btn-danger pull-right buttonSubmit"/><i class="fa fa-check-square-o" aria-hidden="true"></i> CANCELLED/CLOSE</button>
                     @elseif($transaction_details->repair_status == 7 && CRUDBooster::getModulePath() == "to_close" && CRUDBooster::myPrivilegeId() != 2)
                         <button type="submit" id="close" class="btn btn-success pull-right buttonSubmit" style="margin-left: 20px;"><i class="fa fa-check-square-o" aria-hidden="true"></i> CLOSE</button>
-                        {{-- <button type="submit" id="store_payment" onclick="return changeStatus('store_payment')" class="btn btn-primary pull-right buttonSubmit" style="margin-left: 20px;"><i class="fa fa-envelope" aria-hidden="true"></i> IN STORE PAYMENT</button> --}}
+                        <button type="submit" id="store_payment" onclick="return changeStatus('store_payment')" class="btn btn-primary pull-right buttonSubmit" style="margin-left: 20px;"><i class="fa fa-envelope" aria-hidden="true"></i> FINAL PAYMENT PAID IN STORE</button>
                     @endif 
                     @if($transaction_details->repair_status == 8 || $transaction_details->repair_status == 7)    
                         @if(CRUDBooster::myPrivilegeId() != 2)    

@@ -838,20 +838,20 @@
 
 			}
 			// Save Store Payment
-			// if($request->status_id == 'store_payment'){
+			if($request->status_id == 'store_payment'){
 
-			// 	$final_payment = DB::table('returns_header')->where('id',$request->header_id)->first()->final_payment_ref;
-			// 	$numberCode = str_pad($request->header_id, 8, "0", STR_PAD_LEFT);
-			// 	$final_payment_ref_no = 'FP'.$numberCode;
+				$final_payment = DB::table('returns_header')->where('id',$request->header_id)->first()->final_payment_ref;
+				$numberCode = str_pad($request->header_id, 8, "0", STR_PAD_LEFT);
+				$final_payment_ref_no = 'FP'.$numberCode;
 
-			// 	if($final_payment == null){
-			// 		DB::table('returns_header')->where('id',$request->header_id)->update([
-			// 			'final_payment_date_created' => date('Y-m-d H:i:s'),
-			// 			'final_payment_ref'          => $final_payment_ref_no		
-			// 		]);
-			// 	}
+				if($final_payment == null){
+					DB::table('returns_header')->where('id',$request->header_id)->update([
+						'final_payment_date_created' => date('Y-m-d H:i:s'),
+						'final_payment_ref'          => $final_payment_ref_no		
+					]);
+				}
 
-			// }
+			}
 			// To Close For Complete
 			if($request->status_id == 6)
 			{
