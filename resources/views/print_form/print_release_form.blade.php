@@ -444,7 +444,7 @@
                                         @if ($transaction_details->down_payment_date_created == null)
                                             <p></p>
                                             @else
-                                            <p>{{$transaction_details->down_payment_date_created}}</p>
+                                            <p>{{ date_format(date_create($transaction_details->down_payment_date_created),"Y/m/d") }}</p>
                                         @endif
                                     </td>
                                      <td class="table-bordered-display" style="border-width: 0 1px 1px 1px !important; padding:5px; text-align:center;">
