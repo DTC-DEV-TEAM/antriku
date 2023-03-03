@@ -1,5 +1,15 @@
 
 <script type="text/javascript">
+
+    $('#downpayment').click(function(){
+        $('#note_downpayment').hide();
+
+    })
+    $('#downpayment1').click(function(){
+        $('#note_downpayment').hide();
+
+    })
+
     var base_url = window.location.origin;
     $(document).ready(function(){
         $(".limitedNumbChosen").chosen({

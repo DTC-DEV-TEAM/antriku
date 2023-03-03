@@ -91,12 +91,15 @@
                     <div class="row"> 
                         <label class="require control-label col-md-2"><span class="requiredField">*</span>Store Down Payment:</label>
                         <div class="col-md-3">
-                            <label class="radio-inline control-label "><input type="radio" name="downpayment" value="YES"  required>YES</label>
+                            <label class="radio-inline control-label "><input type="radio" name="downpayment" id="downpayment" value="YES"  required>YES</label>
                             <br>
                         </div>
-                        <div class="col-md-3">
-                            <label class="radio-inline control-label "><input type="radio" name="downpayment" value="NO" required>NO</label>
+                        <div class="col-md-1">
+                            <label class="radio-inline control-label "><input type="radio" name="downpayment" id="downpayment1" value="NO" required>NO</label>
                             <br>
+                        </div>
+                        <div class="col-md-">
+                            <label class="radio-inline text-danger" id="note_downpayment"><b>Note: If Not Needed for downpayment/others click "No"</b></label>
                         </div>
                     </div>
                     <br/>
@@ -227,6 +230,8 @@
 @if (!empty($data['success']))
     swal("{{ $data['success'] }}");
 @endif
+
+
 </script>
 
        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">

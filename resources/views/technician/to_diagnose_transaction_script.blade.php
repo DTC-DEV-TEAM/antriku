@@ -365,10 +365,15 @@
                         }, function(){
                            location.reload();
                         });
-                    }
-                    else if(status_id == 'store_payment'){
+                    }else if(status_id == 'store_payment'){
                         $(".buttonSubmit").removeAttr("disabled");
                         swal({ title: "Success!", text: "Final Payment Saved.", type: "success"
+                        }, function(){
+                           location.reload();
+                        });
+                    }else if(status_id == 'save_payment_remarks'){
+                        $(".buttonSubmit").removeAttr("disabled");
+                        swal({ title: "Success!", text: "Final Transaction Saved.", type: "success"
                         }, function(){
                            location.reload();
                         });
@@ -399,14 +404,24 @@
 
     // confirmation for close button
     $(document).on('click', '#close', function(e){
-        swal({ 
-            title:"Do you want to proceed?", text:"Ensure that the customer has received their item before clicking YES.", type:"warning", 
-            confirmButtonText:"Yes", confirmButtonColor:"#5CB85C", showCancelButton:true, cancelButtonText:"No", closeOnConfirm: false, showLoaderOnConfirm: true
-        }, function(){
-            return changeStatus(6);
-        });
+        const payment_remarks = $('#payment_remarks').val()
+        const warranty_status = $('#war_status').val()
         
-        e.preventDefault();
+        if(payment_remarks == null && warranty_status != 'SPECIAL'){
+            swal({ title: "Warning!", text: "Fill out Payment Remarks before closing.", type: "warning"
+            }, function(){
+                location.reload();
+            });
+        }else{
+            swal({ 
+                title:"Do you want to proceed?", text:"Ensure that the customer has received their item before clicking YES.", type:"warning", 
+                confirmButtonText:"Yes", confirmButtonColor:"#5CB85C", showCancelButton:true, cancelButtonText:"No", closeOnConfirm: false, showLoaderOnConfirm: true
+            }, function(){
+                return changeStatus(6);
+            });
+            
+            e.preventDefault();
+        }
     });
 
     // prevent multiple submit of form

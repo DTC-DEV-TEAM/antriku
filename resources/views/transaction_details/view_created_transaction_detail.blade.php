@@ -197,7 +197,24 @@
                 @include('transaction_details.quotation')
                 <br>
             @endif
-
+            @if ($transaction_details->repair_status == 7)
+                <div class="container">
+                    <h4 class="text-success text-center"><b>Payment Remarks</b></h4>
+                    <input id="war_status" type="text" hidden disabled value="{{ $transaction_details->warranty_status }}">
+                    <select name="payment_remarks" id="payment_remarks" class="form-control text-center">
+                        @if ($transaction_details->payment_remarks == null)
+                            <option value="" selected disabled>Choose Payment Remarks, this is required if warranty status is not "SPECIAL"/other's.</option>
+                            <option value="Downpayment Paid">DOWNPAYMENT PAID</option>
+                            <option value="Paid">PAID</option>
+                            <option value="Refunded">REFUNDED</option>   
+                        @else
+                            <option value="{{ $transaction_details->payment_remarks }}">{{ $transaction_details->payment_remarks }}</option>
+                        @endif
+                    </select>
+                </div>
+                <br>
+                <br>           
+            @endif
             <div class="panel-footer">
                 @if(request()->segment(3) == "detail" || CRUDBooster::getModulePath() == "returns_header")
                 <a href="{{ CRUDBooster::adminPath() }}/{{ CRUDBooster::getModulePath() }}" style="margin-left:20px;" class="btn btn-default pull-right"><i class="fa fa-chevron-circle-left"></i> BACK</a>
@@ -244,6 +261,7 @@
                     @elseif($transaction_details->repair_status == 3 && CRUDBooster::getModulePath() == "to_close" && CRUDBooster::myPrivilegeId() != 2)
                         <button type="submit" id="void" onclick="return changeStatus(5)" class="btn btn-danger pull-right buttonSubmit"/><i class="fa fa-check-square-o" aria-hidden="true"></i> CANCELLED/CLOSE</button>
                     @elseif($transaction_details->repair_status == 7 && CRUDBooster::getModulePath() == "to_close" && CRUDBooster::myPrivilegeId() != 2)
+                        <button type="submit" id="save" onclick="return changeStatus('save_payment_remarks')" class="btn btn-primary pull-right buttonSubmit" style="margin-left: 20px;"><i class="fa fa-floppy-o" aria-hidden="true"></i> SAVE</button>
                         <button type="submit" id="close" class="btn btn-success pull-right buttonSubmit" style="margin-left: 20px;"><i class="fa fa-check-square-o" aria-hidden="true"></i> CLOSE</button>
                         <button type="submit" id="store_payment" onclick="return changeStatus('store_payment')" class="btn btn-primary pull-right buttonSubmit" style="margin-left: 20px;"><i class="fa fa-envelope" aria-hidden="true"></i> FINAL PAYMENT PAID IN STORE</button>
                     @endif 

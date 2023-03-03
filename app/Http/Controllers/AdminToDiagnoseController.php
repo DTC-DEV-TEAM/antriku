@@ -586,7 +586,7 @@
                     'other_diagnostic'			=> $all_data['other_diagnostic'],
 					'other_problem_details'		=> $other_problem_details, 
 					'other_problem_details_other' => $all_data['other_problem_details_other'],					
-                    'updated_by'            	=> CRUDBooster::myId()
+                    'updated_by'            	=> CRUDBooster::myId(),
                 ]);
 
 				// *******************************For Diagnostic Test******************************
@@ -851,6 +851,12 @@
 					]);
 				}
 
+			}
+			// Close Payment Remarks
+			if($request->status_id == 'save_payment_remarks'){
+				DB::table('returns_header')->where('id',$request->header_id)->update([
+					'payment_remarks' => $all_data['payment_remarks'],
+				]);
 			}
 			// To Close For Complete
 			if($request->status_id == 6)

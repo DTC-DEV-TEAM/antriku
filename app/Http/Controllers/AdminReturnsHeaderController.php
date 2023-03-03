@@ -518,9 +518,10 @@
 			}
 
 			DB::table('returns_header')->where('id', $headerID)->update([
-				'reference_no'				=>	$tracking_number,
+				'reference_no'				=> $tracking_number,
 				'down_payment_ref'			=> $down_payment_ref_no,
 				'down_payment_date_created' => $dpdc,
+				'downpayment_status'		=> 'PAID'
 			]);
 
 			DB::table('returns_payments')->insertGetId([
@@ -554,7 +555,7 @@
 			if(!empty($transaction_details->down_payment_url)){
 				$status_down_payment = 'PAID';
 			}else{
-				if($request->warranty_status == "OUT OF WARRANTY"){
+				if($request->warranty_status == "OUT OF WARRANTY" || $transaction_details->downpayment_status != null){
 					$status_down_payment = 'UNPAID';
 				}else{
 					$status_down_payment = $request->warranty_status;
