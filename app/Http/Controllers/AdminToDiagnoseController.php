@@ -537,7 +537,7 @@
 				}
 			}
 					
-			if(!empty($transaction_details[0]->down_payment_url)){
+			if(!empty($transaction_details[0]->down_payment_url) || $transaction_details[0]->downpayment_status == 'PAID'){
 				$status_down_payment = 'PAID';
 			}else{
 				if($all_data['warranty_status'] == "OUT OF WARRANTY"){
@@ -773,7 +773,7 @@
 			// Repair In Process
 			if($request->status_id == 4)
 			{
-				if(!empty($transaction_details[0]->down_payment_url)){
+				if(!empty($transaction_details[0]->down_payment_url) || $transaction_details[0]->downpayment_status == 'PAID'){
 					$status_down_payment = 'PAID';
 				}else{
 					if($request->warranty_status == "OUT OF WARRANTY"){

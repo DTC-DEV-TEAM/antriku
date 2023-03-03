@@ -2,11 +2,11 @@
 <script type="text/javascript">
 
     $('#downpayment').click(function(){
-        $('#note_downpayment').hide();
+        $('#remove_note').remove();
 
     })
     $('#downpayment1').click(function(){
-        $('#note_downpayment').hide();
+        $('#remove_note').remove();
 
     })
 

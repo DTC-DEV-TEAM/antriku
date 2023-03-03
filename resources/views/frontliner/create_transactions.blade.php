@@ -94,12 +94,12 @@
                             <label class="radio-inline control-label "><input type="radio" name="downpayment" id="downpayment" value="YES"  required>YES</label>
                             <br>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-3">
                             <label class="radio-inline control-label "><input type="radio" name="downpayment" id="downpayment1" value="NO" required>NO</label>
                             <br>
                         </div>
-                        <div class="col-md-">
-                            <label class="radio-inline text-danger" id="note_downpayment"><b>Note: If Not Needed for downpayment/others click "No"</b></label>
+                        <div class="col-md-3" id='remove_note'>
+                            <label class="text-danger"><b>Note: If Not Needed click "No"</b></label>
                         </div>
                     </div>
                     <br/>

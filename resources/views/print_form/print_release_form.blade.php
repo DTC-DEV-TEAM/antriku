@@ -60,7 +60,7 @@
                                 <span class="control-label col-md-12"><strong>Job Order#: </strong>{{$data['transaction_details']->reference_no}}</span>
                             </div>
                             <div class="row"> 
-                                <span class="control-label col-md-12"><strong>Date Received: </strong>{{date('Y-m-d', strtotime($data['transaction_details']->updated_at))}}</span>
+                                <span class="control-label col-md-12"><strong>Date Received: </strong>{{date('Y-m-d', strtotime($data['transaction_details']->created_at))}}</span>
                             </div>
                             <div class="row">
                                 <span class="control-label col-md-12"><strong>Date Released: </strong>{{ date('Y-m-d') }}</span>
@@ -482,12 +482,11 @@
                             <label class="control-label col-md-15"><strong>Payment Remarks:<strong></label>
                         </td>
                         <td width="100%">
-                            @if ($transaction_details->final_payment_ref != null)
-                            <p>Paid</p>
-                            @elseif ($transaction_details->down_payment_ref != null)
-                                <p>Downpayment Paid</p>
-                            @elseif ($transaction_details->repair_status == 3)
-                                <p>Refunded</p>
+                            @if(!empty($transaction_details->payment_remarks))
+                                {{ $transaction_details->payment_remarks }}
+                            @endif
+                            @if ($transaction_details->repair_status == 5)
+                                Refunded
                             @endif
                         </td>
                     </tr>

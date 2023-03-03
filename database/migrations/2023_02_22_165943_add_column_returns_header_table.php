@@ -26,6 +26,7 @@ class AddColumnReturnsHeaderTable extends Migration
             $table->string('wur_sur')->nullable()->after('technician_mc_in');
             $table->string('gsx_no')->nullable()->after('gsx_status');
             $table->string('requote')->nullable()->after('gsx_no');
+            $table->string('payment_remarks')->nullable()->after('final_payment_cost');
         });
     }
 
@@ -49,6 +50,7 @@ class AddColumnReturnsHeaderTable extends Migration
             $table->dropColumn('wur_sur');
             $table->dropColumn('gsx_no');
             $table->dropColumn('requote');
+            $table->dropColumn('payment_remarks');
         });
     }
 }
