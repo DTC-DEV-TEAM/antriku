@@ -208,10 +208,14 @@
                 if($transaction_details->other_problem_details == null){
                     $opd = $transaction_details->other_problem_details;
                 }else{
-                    $opd = $display_opd.', '.$transaction_details->other_problem_details_other;
+                    if($transaction_details->other_problem_details_other == null){
+                        $opd = $display_opd;
+                    }else{
+                        $opd = $display_opd.', '.$transaction_details->other_problem_details_other;
+                    }
+                    
                 }
             ?>
-            
             <div class="row">    
                 <div class="col-md-12">
                     <label class="control-label col-md-3" style="margin-top:7px;">Other Diagnostic Information:</label>

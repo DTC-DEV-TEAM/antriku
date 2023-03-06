@@ -208,13 +208,21 @@
                     <h4 class="text-success text-center"><b>Payment Remarks</b></h4>
                     <input id="war_status" type="text" hidden disabled value="{{ $transaction_details->warranty_status }}">
                     <select name="payment_remarks" id="payment_remarks" class="form-control text-center">
-                        @foreach ($arrayp as $value)
-                            @if($transaction_details->payment_remarks == $value)
-                                <option selected value="{{ $value }}">{{ $value }}</option>
-                                @else
+                        @if ($transaction_details->payment_remarks == null)
+                            <option value="" disabled selected>If "SPECIAL/other's" not required.</option>
+                            @foreach ($arrayp as $value)
                                 <option value="{{ $value }}">{{ $value }}</option>
-                            @endif
-                        @endforeach
+                            @endforeach
+                        @else
+                            @foreach ($arrayp as $value)
+                                @if($transaction_details->payment_remarks == $value)
+                                    <option selected value="{{ $value }}">{{ $value }}</option>
+                                @else
+                                    <option value="{{ $value }}">{{ $value }}</option>
+                                @endif
+                            @endforeach
+                        @endif
+
                     </select>
                 </div>
                 <br>
