@@ -18,6 +18,7 @@ class CreatePaymentRemarksTable extends Migration
             $table->string('remarks');
             $table->string('status');
             $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
             $table->timestamps();
         });
     }

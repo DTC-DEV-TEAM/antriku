@@ -33,6 +33,7 @@
 			$this->col[] = ["label"=>"Remarks","name"=>"remarks"];
 			$this->col[] = ["label"=>"Status","name"=>"status"];
 			$this->col[] = ["label"=>"Created By","name"=>"created_by"];
+			$this->col[] = ["label"=>"Updated By","name"=>"updated_by"];
 			$this->col[] = ["label"=>"Created At","name"=>"created_at"];
 			$this->col[] = ["label"=>"Updated At","name"=>"updated_at"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -309,7 +310,9 @@
 	    */
 	    public function hook_after_edit($id) {
 	        //Your code here 
-
+			DB::table('payment_remarks')->where('id', $id)->update([
+				'updated_by' => CRUDBooster::myName()
+			]);
 	    }
 
 	    /* 
