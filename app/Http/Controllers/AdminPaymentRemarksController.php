@@ -260,6 +260,13 @@
 					$column_value = '<span class="label label-warning">'.$column_value.'</span>';
 				};
 			}
+			elseif($column_index == 2){
+				if($column_value == 'ACTIVE'){
+					$column_value = '<span style="color: #00B74A"><strong>'.$column_value.'</strong></span>';
+				}else{
+					$column_value = '<span style="color: #F93154"><strong>'.$column_value.'</strong></span>';
+				}
+			}
 	    }
 
 	    /*
