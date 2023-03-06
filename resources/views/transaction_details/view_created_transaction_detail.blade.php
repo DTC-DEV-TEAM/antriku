@@ -198,18 +198,23 @@
                 <br>
             @endif
             @if ($transaction_details->repair_status == 7)
+                @php
+                    $arrayp = [];
+                    foreach($payment_remarks as $pmr){
+                        array_push($arrayp,$pmr->remarks);
+                    }
+                @endphp
                 <div class="container">
                     <h4 class="text-success text-center"><b>Payment Remarks</b></h4>
                     <input id="war_status" type="text" hidden disabled value="{{ $transaction_details->warranty_status }}">
                     <select name="payment_remarks" id="payment_remarks" class="form-control text-center">
-                        @if ($transaction_details->payment_remarks == null)
-                            <option value="" selected disabled>Choose Payment Remarks, this is required if warranty status is not "SPECIAL"/other's.</option>
-                            <option value="Downpayment Paid">DOWNPAYMENT PAID</option>
-                            <option value="Paid">PAID</option>
-                            <option value="Refunded">REFUNDED</option>   
-                        @else
-                            <option value="{{ $transaction_details->payment_remarks }}">{{ $transaction_details->payment_remarks }}</option>
-                        @endif
+                        @foreach ($arrayp as $value)
+                            @if($transaction_details->payment_remarks == $value)
+                                <option selected value="{{ $value }}">{{ $value }}</option>
+                                @else
+                                <option value="{{ $value }}">{{ $value }}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
                 <br>

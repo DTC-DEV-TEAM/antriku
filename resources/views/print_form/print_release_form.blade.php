@@ -385,11 +385,6 @@
                 <div class="table-responsive">
                 <table class="print-friendly table" width="100%" style="border-spacing:unset !important;">
                     <tbody> 
-                        {{-- <tr style="font-size: 18px;">
-                            <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
-                                <label style="margin-bottom:unset !important;">Summary of Charges</label>
-                            </td>
-                        </tr> --}}
                         <tr style="font-size: 13px;">
                              <td width="10%" class="table-bordered-display" style="border-width: 1px !important;padding:5px;text-align:center;">
                                 <label class="control-label col-md-12"><strong>Diagnostic Fee</strong></label>
@@ -562,16 +557,6 @@
         generator.print();
         generator.close();
 
-        // var mywindow = window.open();
-        // var content = document.getElementById('printableArea').innerHTML;
-        // var realContent = document.body.innerHTML;
-        // mywindow.document.write(content);
-        // mywindow.document.close(); // necessary for IE >= 10
-        // mywindow.focus(); // necessary for IE >= 10*/
-        // mywindow.print();
-        // document.body.innerHTML = realContent;
-        // mywindow.close();
-        // return true;
     }  
 
     $(document).on('click', '#print', function(e){
