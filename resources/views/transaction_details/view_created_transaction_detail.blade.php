@@ -197,7 +197,7 @@
                 @include('transaction_details.quotation')
                 <br>
             @endif
-            @if ($transaction_details->repair_status == 7)
+            @if ($transaction_details->repair_status == 7 && request()->segment(3) == "edit")
                 @php
                     $arrayp = [];
                     foreach($payment_remarks as $pmr){
@@ -209,7 +209,7 @@
                     <input id="war_status" type="text" hidden disabled value="{{ $transaction_details->warranty_status }}">
                     <select name="payment_remarks" id="payment_remarks" class="form-control text-center">
                         @if ($transaction_details->payment_remarks == null)
-                            <option value="" disabled selected>If "SPECIAL/other's" not required.</option>
+                            <option value="" disabled selected>Payment remarks is required. Please choose</option>
                             @foreach ($arrayp as $value)
                                 <option value="{{ $value }}">{{ $value }}</option>
                             @endforeach
@@ -222,7 +222,6 @@
                                 @endif
                             @endforeach
                         @endif
-
                     </select>
                 </div>
                 <br>

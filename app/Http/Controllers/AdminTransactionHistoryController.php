@@ -350,7 +350,8 @@
 			$data['imfs'] = DB::table('product_item_master')->where('status', 'ACTIVE')->get();
 			$data['ProblemDetails'] = DB::table('problem_details')->where('status', 'ACTIVE')->orderBy('problem_details', 'ASC')->get();
 			$data['TechTesting'] = DB::table('tech_testing')->where('test_type_status', 'ACTIVE')->where('model_group_id','!=',NULL)->orderBy('description', 'ASC')->get();
-			
+			$data['payment_remarks'] = DB::table('payment_remarks')->where('status', 'ACTIVE')->get();
+
 			$this->cbView('transaction_details.view_created_transaction_detail',$data);
 		}
 

@@ -781,14 +781,15 @@
 			$techinfo_arr = array();
 			
 			foreach($repair_tech as $id){
-				$data['test'] = DB::table('cms_users')->where('id',$id)->first();
-				array_push($techinfo_arr,$data['test']);
+				$data['technician'] = DB::table('cms_users')->where('id',$id)->first();
+				array_push($techinfo_arr,$data['technician']);
 			}
 			$data['technician_info'] = $techinfo_arr;
 
 			$data['Model'] = DB::table('model')->orderBy('model_name', 'ASC')->get();
 			$data['Branch'] = DB::table('branch')->leftJoin('cms_users', 'branch.id', '=', 'cms_users.branch_id')->where('cms_users.id',$data['transaction_details']->user_id)->first();
-			
+			$data['repair_technician'] = DB::table('returns_header')->select('repair_technician')->where('id',$id)->get();
+
 			$this->cbView("print_form.print_release_form", $data);
 		}
 
@@ -820,6 +821,16 @@
 
 			$data['Model'] = DB::table('model')->orderBy('model_name', 'ASC')->get();
 			$data['Branch'] = DB::table('branch')->leftJoin('cms_users', 'branch.id', '=', 'cms_users.branch_id')->where('cms_users.id',$data['transaction_details']->user_id)->first();
+			$data['repair_technician'] = DB::table('returns_header')->select('repair_technician')->where('id',$id)->get();
+			$repair_tech = explode(',',$data['repair_technician'][0]->repair_technician);
+			$techinfo_arr = array();
+			
+			foreach($repair_tech as $id){
+				$data['technician'] = DB::table('cms_users')->where('id',$id)->first();
+				array_push($techinfo_arr,$data['technician']);
+			}
+			$data['technician_info'] = $techinfo_arr;
+			$data['repair_technician'] = DB::table('returns_header')->select('repair_technician')->where('id',$id)->get();
 
 			$this->cbView("print_form.print_release_form", $data);
 		}
