@@ -204,21 +204,18 @@
             </div>
             <?php 
                 $display_opd = str_replace(',',', ',$transaction_details->other_problem_details);
-
                 $other_diagnostic = $transaction_details->other_diagnostic == null ? 'N/A':$transaction_details->other_diagnostic;
                 if($transaction_details->other_problem_details == null){
                     $opd = $transaction_details->other_problem_details;
                 }else{
-                    $opd = $display_opd;
+                    $opd = $display_opd.', '.$transaction_details->other_problem_details_other;
                 }
             ?>
-                
+            
             <div class="row">    
                 <div class="col-md-12">
                     <label class="control-label col-md-3" style="margin-top:7px;">Other Diagnostic Information:</label>
-                    {{-- <div class="col-md-9" style="margin-top:7px;">{{ $transaction_details->other_diagnostic ?? 'N/A' }}</div> --}}
                     <div class="col-md-9" style="margin-top:7px;">@php echo $other_diagnostic @endphp</div>
-                
                 </div>
                 <div class="col-md-12">
                     <label class="control-label col-md-3" style="margin-top:7px;">Other Problem Details:</label>
