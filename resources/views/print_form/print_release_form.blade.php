@@ -72,6 +72,7 @@
                     </tr> 
                 </table>  
 
+                {{-- Customer Information and Service Details --}}
                 <table width="100%" class="print-friendly">
                     <tr style="font-size: 18px;">
                         <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
@@ -123,9 +124,6 @@
                     </tr>
                     <tr></tr>
                     <tr style="font-size: 18px;">
-                        <!-- <td colspan="4"><br>
-                            <label class="control-label col-md-12"><strong>Service Details<strong></label>
-                        </td> -->
                         <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
                             <label style="margin-bottom:unset !important;">Service Details</label>
                         </td>
@@ -202,6 +200,8 @@
                     </tbody>
                 </table>
                 <br>
+                {{-- End of Customer Information and Service Details --}}
+                
                 <!-- <table class="print-friendly" width="100%">
                     <tbody> 
                         <tr style="font-size: 18px;">
@@ -217,13 +217,22 @@
                     </tbody>
                 </table>
                 <br> -->
-                {{-- Technician Details --}}
+
+                {{-- Technician --}}
                 <table width="100%" class="print-friendly" style="margin-bottom: 5px">
-                    <tr style="font-size: 18px;">
-                        <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
-                            <label style="margin-bottom:unset !important;">Technician</label>
-                        </td>
-                    </tr>
+                    @if (count($technician_info) > 1)
+                        <tr style="font-size: 18px;">
+                            <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
+                                <label style="margin-bottom:unset !important;">Technicians</label>
+                            </td>
+                        </tr>
+                        @else
+                        <tr style="font-size: 18px;">
+                            <td colspan="4" style="width:100%;background:#595959;color:white;padding:5px;"> 
+                                <label style="margin-bottom:unset !important;">Technician</label>
+                            </td>
+                        </tr>
+                    @endif
                     @foreach ( $technician_info as $technician )
                     <tr style="font-size: 13px;">
                         <td width="20%" style="vertical-align: top;">
@@ -242,6 +251,8 @@
                     @endforeach
                 </table>
                 {{-- End of Technician Details --}}
+
+                {{-- Technical Report --}}
                 <table class="print-friendly" width="100%" style="border-spacing:unset !important;"> 
                     <tbody> 
                         <tr style="font-size:18px;">
@@ -290,6 +301,7 @@
                         </tr>
                     </tbody>
                 </table>
+                {{--End of Technical Report  --}}
 
                 {{-- Repair Strategy --}}
                 <table width="100%" class="print-friendly" id="repair-strat">
@@ -323,6 +335,7 @@
                 </table>
                 {{-- End of Repair Strategy --}}
 
+                {{-- Summary of Charges --}}
                 <table class="print-friendly" width="100%" style="border-spacing:unset !important;">
                     <tbody> 
                         <tr style="font-size: 18px;">
@@ -471,6 +484,9 @@
                 </table>
                 </div>      
                 <br>   
+                {{-- End of Summary of Charges --}}
+
+                {{-- Payment Remarks --}}
                 <table width="100%" class="print-friendly">
                     <tr style="font-size: 13px;">
                         <td width="20%" style="vertical-align: top;">
@@ -487,6 +503,9 @@
                     </tr>
                 </table>    
                 <br>
+                {{-- End of Payment Remarks --}}
+
+                {{-- Warranty Statement --}}
                 <table width="100%" class="print-friendly">
                     <tr style="font-size: 13px;">
                         <td colspan="2" style="text-align: justify;">
@@ -530,6 +549,7 @@
                         </td>
                     </tr>
                 </table>
+                {{-- End of Warranty Statement --}}
             </div>
         </div>          
     </div>

@@ -89,7 +89,7 @@
                     </div>
                     <br>
                     <div class="row"> 
-                        <label class="require control-label col-md-2"><span class="requiredField">*</span>Store Down Payment:</label>
+                        <label class="require control-label col-md-2"><span class="requiredField">*</span>Store Downpayment:</label>
                         <div class="col-md-3">
                             <label class="radio-inline control-label "><input type="radio" name="downpayment" id="downpayment" value="YES"  required>YES</label>
                             <br>
@@ -99,7 +99,7 @@
                             <br>
                         </div>
                         <div class="col-md-3" id='remove_note'>
-                            <label class="text-danger"><b>Note: If Not Needed click "No"</b></label>
+                            <label class="text-danger"><b>Note: If unrequired click "NO"</b></label>
                         </div>
                     </div>
                     <br/>
