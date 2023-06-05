@@ -20,7 +20,7 @@
                 <table width="100%">
                     <tr>
                         <th colspan="4" style="text-align:center;">
-                            <img src="{{asset('img/btblogo.png')}}" style="align:middle;width:40%;height:auto;">
+                            <img src="{{asset('img/btblogo.png')}}" style="align:middle;width:45%;height:auto;">
                         </th>
                     </tr>   
                     <tr>
